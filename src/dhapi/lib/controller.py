@@ -6,8 +6,6 @@ from colorama import Back, Fore, Style, init
 from . import auth, lotto645
 
 ### Commands
-
-
 def login(user_id: str, user_pw: str):
     globalAuthCtrl = auth.AuthController()
     globalAuthCtrl.login(user_id, user_pw)
@@ -22,8 +20,6 @@ def buy_lotto645(authCtrl: auth.AuthController, cnt: int, mode: str):
 
 
 ### Configs
-
-
 def loggerSetup():
     # init(autoreset=True)
     init()
@@ -39,17 +35,10 @@ def set_argparse():
         required=True,
     )
 
-    class PasswordAction(argparse.Action):
-     def __call__(self, parser, namespace, values, option_string=None):
-         mypass = getpass.getpass()
-         setattr(namespace, self.dest, mypass)
-
     parser.add_argument(
         "-P",
         "--password",
         required=True,
-        action=PasswordAction,
-        nargs=0
     )
     parser.add_argument("-K", "--kind", required=True, choices=["lotto645"])
     parser.add_argument("-T", "--task", required=True, choices=["buy"])
@@ -71,8 +60,6 @@ def set_argparse():
 
 
 ### Main
-
-
 def run():
     # loggerSetup()
 
